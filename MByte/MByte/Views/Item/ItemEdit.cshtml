@@ -1,0 +1,72 @@
+﻿@model MByte.Models.ViewItemEditModel
+
+@{
+    ViewBag.Title = "ItemEdit";
+}
+
+<h2>ItemEdit</h2>
+
+
+       
+        @using (Html.BeginForm("ItemEdit", "Item", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+
+               
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.MyItems.id)
+
+
+                <div>
+                    
+                </div>
+                <div class="form-group">
+                   
+                    @Html.DropDownListFor(model => Model.MyItems.catid, new SelectList(Model.MyCategories.Select(x => new { Value = x.Id, Text = x.name }), "Value", "Text")))
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyItems.name, new { @class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyItems.name)
+                        @Html.ValidationMessageFor(model => model.MyItems.name)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyItems.imageurl, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyItems.imageurl)
+                        @Html.ValidationMessageFor(model => model.MyItems.imageurl)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyItems.price, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyItems.price)
+                        @Html.ValidationMessageFor(model => model.MyItems.price)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyItems.description, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyItems.description)
+                        @Html.ValidationMessageFor(model => model.MyItems.description)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MyItems.isactive, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MyItems.isactive)
+                        </div>
+                    </div>
+               
+            </div>
+            <div style="text-align: right; padding: 15px 95px 15px 15px;">
+                <button type="submit" class="btn btn-success edit-btn">Edit Item</button>
+                }
+
+
+            </div>
+        }

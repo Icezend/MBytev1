@@ -1,0 +1,41 @@
+﻿@model MByte.Models.ViewCategoryEditModel
+
+@{
+    ViewBag.Title = "CategoryEdit";
+}
+
+<h2>CategoryEdit</h2>
+
+@using (Html.BeginForm("CategoryEdit", "Category", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MyCategory.id)
+
+
+        <div>
+
+        </div>
+        <div class="form-group">
+
+            @Html.DropDownListFor(model => Model.MyCategory.family_id, new SelectList(Model.MyCategories.Select(x => new { Value = x.id, Text = x.name }), "Value", "Text")))
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MyCategory.name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MyCategory.name)
+                @Html.ValidationMessageFor(model => model.MyCategory.name)
+            </div>
+        </div>
+        <div style="text-align: right; padding: 15px 95px 15px 15px;">
+            <button type="submit" class="btn btn-success edit-btn">Edit Category</button>
+        </div>
+        }
+    </div>
+}
+

@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    ViewBag.Title = "CategoryCreate";
+}
+
+<h2>CategoryCreate</h2>
+
+
+
+
+<form id="productForm" method="POST" action="/Category/CategoryCreate">
+    <fieldset>
+        @Html.HiddenFor(model => model.id)
+        <div>
+            <label class="col-sm-3">Category Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div style="text-align: right; padding: 15px 95px 15px 15px;">
+                <button type="submit" class="btn btn-success edit-btn">Add Category</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
