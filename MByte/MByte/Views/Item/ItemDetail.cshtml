@@ -1,0 +1,48 @@
+﻿@model Items
+
+@{
+    ViewBag.Title = "ItemDetail";
+}
+
+<h2>ItemDetail</h2>
+<div>
+    @if (Model != null)
+            {
+        <section>
+            <table>
+                <tr>
+                    <th>Categoryid</th>
+                    <th>Name</th>
+                    <th>ImageURL</th>
+                    <th>IsActive</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+
+                <tbody>
+                    
+                        <tr>
+
+                            <td>@Model.catid</td>
+                            <td>@Model.name</td>
+                            <td>@Model.imageurl</td>
+                            <td>@Model.isactive</td>
+                            <td>@Model.description</td>
+                            <td>@Model.price</td>
+
+                        </tr>
+                    
+
+                </tbody>
+
+            </table>
+
+
+        </section>
+    }
+    else
+    {
+        <div>Veri bulunamamaktadır</div>
+    }
+</div>
+

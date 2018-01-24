@@ -1,0 +1,38 @@
+﻿@model MByte.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>LogIn</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+            @Html.AntiForgeryToken()
+<table>
+<tbody><tr>
+<td style = "width: 140px;"> @Html.LabelFor(m => m.Username) </td>
+ <td> @Html.TextBoxFor(m => m.Username) </td>
+</tr>
+ <tr>
+ <td> @Html.LabelFor(m => m.Password) </td>
+ <td> @Html.PasswordFor(m => m.Password) </td>
+</tr>
+ <tr>
+ <td> @Html.LabelFor(m => m.RememberMe) </td>
+ <td> @Html.CheckBoxFor(m => m.RememberMe) </td>
+</tr>
+    <tr>
+        <br />
+        <br />
+        <td> @Html.ActionLink("ForgetPassword","ForgetPassword") </td>
+        <td> @Html.ActionLink("New Account", "Register") </td>
+
+    </tr>
+ <tr>
+ <td></td>
+ <td><input class="btn btn-default" type="submit" value="Giriş"></td>
+</tr>
+</tbody></table>
+}

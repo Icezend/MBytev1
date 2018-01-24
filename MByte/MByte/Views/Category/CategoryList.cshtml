@@ -1,0 +1,37 @@
+﻿@model MByte.Models.SeededCategories
+
+<head>
+    <script type="text/javascript">
+
+
+        function deleteRecord(recordId)
+        {
+            // Perform delete
+            var action = "http://localhost:7325/Category/CategoryDelete/" + recordId;
+
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", action);
+            xhttp.send();
+
+
+
+
+
+            //var request = new Sys.Net.WebRequest();
+            //request.set_httpVerb("DELETE");
+            //request.set_url(action);
+            //request.invoke();
+        }
+    </script>
+</head>
+
+    @{
+        ViewBag.Title = "CategoryList";
+    }
+
+    <h2>CategoryList</h2>
+
+@Html.Partial("TreeCategories", Model)
+
+    

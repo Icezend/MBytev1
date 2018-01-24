@@ -1,0 +1,88 @@
+﻿@model List<ItemsWithCategories_Result>
+
+<head>
+    <script type="text/javascript">
+
+
+        function deleteRecord(recordId)
+        {
+            debugger;
+            // Perform delete
+            var action = "http://localhost:7325/Item/ItemDelete/" + recordId;
+
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", action, false);
+            xhttp.send();
+
+
+
+
+
+            //var request = new Sys.Net.WebRequest();
+            //request.set_httpVerb("DELETE");
+            //request.set_url(action);
+            //request.invoke();
+        }
+    </script>
+</head>
+
+
+@{
+    ViewBag.Title = "ItemList";
+}
+
+<h2>ItemList</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ItemList</title>
+</head>
+<body>
+    <div>
+        @if (Model != null)
+            {
+            <section>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                               
+                                <td>@item.categoryname</td>
+                                <td>@item.name</td>
+                                <td>@item.price</td>
+                                <td>@Html.ActionLink("Details", item.name + "-" + item.categoryname, new { id = item.id })</td>
+                                <td>@Html.ActionLink("Edit", "ItemEdit", new { id = item.id })</td>
+                                <td>
+                                    <a onclick="deleteRecord(@item.id);" href="#">Delete</a>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+
+            </section>
+        }
+        else
+        {
+            <div>Veri bulunamamaktadır</div>
+        }
+
+        <div style="text-align: right; padding: 15px 95px 15px 15px;">
+            <p><a class="btn btn-default" href="http://localhost:7325/Item/ItemCreate/">Create &raquo;</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
